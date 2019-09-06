@@ -7,21 +7,24 @@ def scrape_mars():
     executable_path = {'executable_path': 'chromedriver'}
     browser = Browser('chrome', **executable_path)
     mars_title, mars_p = mars_news(browser)
-    return {
+    mars_dict = {
         'mars_title': mars_title,
         'mars_p': mars_p,
         'featured_image_url': mars_img(browser),
-        'mars_weather': mars_weather(mars_facts),
+        'mars_weather': mars_weather(browser),
         'mars_facts':mars_facts(),
         'hemisphere_image_urls': mars_hemi(browser)
     }
+    browser.quit()
+    return mars_dict
 
 def mars_news(browser):
     url = 'https://mars.nasa.gov/news'
     browser.visit(url)
+    time.sleep(1)
     html = browser.html
     soup = bs(html, 'html.parser')
-    lide = soup.find('li', class_='slide')
+    slide = soup.find('li', class_='slide')
     mars_title = slide.find('div', class_='content_title').text
     mars_p = slide.find('div', class_='article_teaser_body').text
     return mars_title, mars_p
