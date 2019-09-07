@@ -24,44 +24,54 @@
       background-repeat: no-repeat;
       background-size: cover;
     }
+    .card {
+      opacity: 0.7;
+    }
   </style>
   <body>
-    <div class="jumbotron" style="opacity: 0.7;">
-      <h1 class="display-3">Mission to Mars</h1>
-      <hr class="my-2" />
-      <p class="lead">
-        <a class="btn btn-primary btn-lg" href="/scrape" role="button"
+      <div class="card text-center"> 
+          <div class="card-body">
+              <h1 class="display-3">Mission to Mars</h1>
+            <a class="btn btn-danger " href="/scrape" role="button"
           >Scrape Nasa</a
         >
-      </p>
-    </div>
+          </div>
+        </div>
+<br>
     <div class="container">
       <div class="row text-light">
         <div class="col">
-          <h2>{{ mars_data.mars_title }}</h2>
+          <h2 class='text-light text-center'>Mars News</h2>
+          <h4>{{ mars_data.mars_title }}</h4>
           <p>{{ mars_data.mars_p }}</p>
+          <br>
+          <h2 class='text-light text-center'>Mars Weather</h2>
           <p>{{ mars_data.mars_weather }}</p>
         </div>
         <div class="col">
           <div>
+              <h2 class='text-light text-center'>Mars Facts</h2>
             {{ mars_data.mars_facts | safe }}
           </div>
         </div>
       </div>
 
       <br />
-      <div class="row text-light">
+      <h2 class='text-light text-center'>Mars Hemispheres</h2>
+      <br>
+      <div class="row text-light text-center">
         {%for i in range(4)%}
         <div class="col">
+          <h5>{{ mars_data.hemisphere_image_urls[i].title }}</h5>
           <img
             src="{{ mars_data.hemisphere_image_urls[i].link }}"
             alt="hemi{{ [i] }}"
             style="height: 150px;width: 150px;"
           />
-          <h5>{{ mars_data.hemisphere_image_urls[i].title }}</h5>
         </div>
         {%endfor%}
       </div>
+      <br>
     </div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->

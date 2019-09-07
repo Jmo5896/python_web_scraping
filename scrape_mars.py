@@ -56,7 +56,7 @@ def mars_weather(browser):
 def mars_facts():
     df= pd.read_html('https://space-facts.com/mars/')[1]
     df.columns = ['Description', 'Value']
-    df = df.to_html(classes='table table-striped text-light')
+    df = df.to_html(classes='table table-striped text-light text-center')
     return df
 
 def mars_hemi(browser):
