@@ -8,7 +8,7 @@
       name="viewport"
       content="width=device-width, initial-scale=1, shrink-to-fit=no"
     />
-
+    <link rel="shortcut icon"" href="{{ url_for('static', filename = './images/favicon.ico') }}" type="image/x-icon"/>
     <!-- Bootstrap CSS -->
     <link
       rel="stylesheet"
@@ -25,45 +25,62 @@
       background-size: cover;
     }
     .card {
+      background-color: bisque;
       opacity: 0.7;
+    }
+    .contactLogos {
+      height: 40px;
+      width: 40px;
+      -webkit-transition: all 0.5s ease-out;
+      -moz-transition: all 0.5s ease-out;
+      -ms-transition: all 0.5s ease-out;
+      -o-transition: all 0.5s ease-out;
+      transition: all 0.5s ease-out;
+    }
+    .contactLogos:hover {
+      -webkit-transform: rotate(360deg);
+      -moz-transform: rotate(360deg);
+      -ms-transform: rotate(360deg);
+      -o-transform: rotate(360deg);
+      transform: rotate(360deg);
     }
   </style>
   <body>
-      <div class="card text-center"> 
-          <div class="card-body">
-              <h1 class="display-3">Mission to Mars</h1>
-            <a class="btn btn-danger " href="/scrape" role="button"
-          >Scrape Nasa</a
-        >
-          </div>
-        </div>
-<br>
+    <div class="card text-center">
+      <div class="card-body">
+        <h1 class="display-3">Mission to Mars</h1>
+        <a class="btn btn-danger " href="/scrape" role="button">Scrape Nasa</a>
+        <p class="lead">(Give it a minute...)</p>
+      </div>
+    </div>
+    <br />
     <div class="container">
       <div class="row text-light">
         <div class="col">
-          <h2 class='text-light text-center'>Mars News</h2>
+          <h2 class="text-light text-center">Mars News</h2>
           <h4>{{ mars_data.mars_title }}</h4>
           <p>{{ mars_data.mars_p }}</p>
-          <br>
-          <h2 class='text-light text-center'>Mars Weather</h2>
+          <br />
+          <h2 class="text-light text-center">Mars Weather</h2>
           <p>{{ mars_data.mars_weather }}</p>
         </div>
         <div class="col">
           <div>
-              <h2 class='text-light text-center'>Mars Facts</h2>
+            <h2 class="text-light text-center">Mars Facts</h2>
             {{ mars_data.mars_facts | safe }}
           </div>
         </div>
       </div>
 
       <br />
-      <h2 class='text-light text-center'>Mars Hemispheres</h2>
-      <br>
+      <h2 class="text-light text-center">Mars Hemispheres</h2>
+      <br />
       <div class="row text-light text-center">
         {%for i in range(4)%}
         <div class="col">
           <h5>{{ mars_data.hemisphere_image_urls[i].title }}</h5>
           <img
+            class="rounded-circle"
             src="{{ mars_data.hemisphere_image_urls[i].link }}"
             alt="hemi{{ [i] }}"
             style="height: 150px;width: 150px;"
@@ -71,8 +88,43 @@
         </div>
         {%endfor%}
       </div>
-      <br>
+      <br />
     </div>
+    <footer class="footer bg-dark text-center">
+      <div class="container">
+        <h5 class="text-muted">Check me out on GitHub or linkedin!!!</h5>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <a
+              class="col"
+              href="mailto:justin.m.moore5896@gmail.com?subject=Email%20portfolio_site"
+              ><img
+                class="contactLogos rounded"
+                src="{{ url_for('static', filename = './images/gmail.png') }}"
+                alt=""
+            /></a>
+            <a
+              class="col"
+              href="https://www.linkedin.com/in/justin-moore-3ab083158/"
+              target="_blank"
+              ><img
+                class="contactLogos rounded"
+                src="{{ url_for('static', filename = './images/linkedIn.png') }}"
+                alt=""
+            /></a>
+            <a class="col" href="https://github.com/Jmo5896" target="_blank"
+              ><img
+                class="contactLogos rounded"
+                src="{{ url_for('static', filename = './images/gitHub.png') }}"
+                alt=""
+            /></a>
+          </div>
+          <div class="col-2"></div>
+        </div>
+      </div>
+      <br />
+    </footer>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script

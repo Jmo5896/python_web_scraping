@@ -5,7 +5,7 @@ import time
 
 def scrape_mars():
     executable_path = {'executable_path': 'chromedriver'}
-    browser = Browser('chrome', **executable_path, headless=False)
+    browser = Browser('chrome', **executable_path, headless=True)
     mars_title, mars_p = mars_news(browser)
     mars_dict = {
         'mars_title': mars_title,
