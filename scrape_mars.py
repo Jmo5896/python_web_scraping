@@ -5,7 +5,7 @@ import time
 
 def scrape_mars():
     executable_path = {'executable_path': 'chromedriver'}
-    browser = Browser('chrome', **executable_path)
+    browser = Browser('chrome', **executable_path, headless=False)
     mars_title, mars_p = mars_news(browser)
     mars_dict = {
         'mars_title': mars_title,
@@ -55,8 +55,8 @@ def mars_weather(browser):
 
 def mars_facts():
     df= pd.read_html('https://space-facts.com/mars/')[1]
-    df.columns = ['fact', 'value']
-    df = df.to_html(classes='table table-striped')
+    df.columns = ['Description', 'Value']
+    df = df.to_html(classes='table table-striped text-light')
     return df
 
 def mars_hemi(browser):
