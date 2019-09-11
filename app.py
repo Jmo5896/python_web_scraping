@@ -1,12 +1,8 @@
 from flask import Flask, render_template, redirect
 from flask_pymongo import PyMongo
 import scrape_mars
-# from login_db import myKeys
-def myKeys():
-    return {
-        "userName": "jmo5896",
-        "password": "Spansyekoms22"
-    }
+from login_db import myKeys
+
 keys = myKeys()
 app = Flask(__name__)
 
